@@ -1,0 +1,161 @@
+import { Club, Event, User, Booking, Review, Recommendation } from '@/types';
+
+export const mockUser: User = {
+  id: '1',
+  name: 'Jerome Dupuis',
+  email: 'jerome.dupuis@email.com',
+  avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+  preferences: {
+    musicGenres: ['House', 'Techno', 'Electronic'],
+    budget: 'medium',
+    neighborhoods: ['Marais', 'Bastille', 'Pigalle'],
+  },
+  stats: {
+    eventsAttended: 24,
+    loyaltyPoints: 1250,
+    vipStatus: true,
+  },
+};
+
+export const mockClubs: Club[] = [
+  {
+    id: '1',
+    name: 'Le Duplex',
+    address: '2 Av. Foch, 75116 Paris',
+    neighborhood: 'Champs-Élysées',
+    image: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=400',
+    rating: 4.2,
+    reviewCount: 387,
+    priceRange: '$$$',
+    musicGenres: ['House', 'Electronic', 'Pop'],
+    dressCode: 'Chic & Elegant',
+    features: ['VIP Area', 'Rooftop', 'Private Booths'],
+    coordinates: { latitude: 48.8738, longitude: 2.2874 },
+  },
+  {
+    id: '2',
+    name: 'Rex Club',
+    address: '5 Bd Poissonnière, 75002 Paris',
+    neighborhood: 'Grands Boulevards',
+    image: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=400',
+    rating: 4.6,
+    reviewCount: 512,
+    priceRange: '$$',
+    musicGenres: ['Techno', 'House', 'Electronic'],
+    dressCode: 'Casual Cool',
+    features: ['Underground Vibe', 'World-Class Sound', 'Late Night'],
+    coordinates: { latitude: 48.8701, longitude: 2.3473 },
+  },
+  {
+    id: '3',
+    name: 'Silencio',
+    address: '142 Rue Montmartre, 75002 Paris',
+    neighborhood: 'Montmartre',
+    image: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=400',
+    rating: 4.4,
+    reviewCount: 293,
+    priceRange: '$$$',
+    musicGenres: ['Experimental', 'Jazz', 'Electronic'],
+    dressCode: 'Artistic & Creative',
+    features: ['Private Club', 'Art Gallery', 'Exclusive Events'],
+    coordinates: { latitude: 48.8698, longitude: 2.3435 },
+  },
+];
+
+export const mockEvents: Event[] = [
+  {
+    id: '1',
+    title: 'Neon Nights: Electronic Fusion',
+    club: mockClubs[0],
+    date: '2025-01-25',
+    time: '23:00',
+    image: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=400',
+    description: 'Une soirée électronique exceptionnelle avec les meilleurs DJs internationaux',
+    dj: 'Martin Garrix',
+    musicGenre: 'Electronic House',
+    price: { regular: 35, vip: 80, guestList: 15 },
+    capacity: 400,
+    attendees: 287,
+    isGuestListAvailable: true,
+    isVipAvailable: true,
+    tags: ['Hot', 'International DJ', 'VIP Available'],
+  },
+  {
+    id: '2',
+    title: 'Underground Techno Session',
+    club: mockClubs[1],
+    date: '2025-01-26',
+    time: '22:30',
+    image: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=400',
+    description: 'Plongez dans l\'univers underground du techno parisien',
+    dj: 'Charlotte de Witte',
+    musicGenre: 'Techno',
+    price: { regular: 25, vip: 60, guestList: 10 },
+    capacity: 300,
+    attendees: 145,
+    isGuestListAvailable: true,
+    isVipAvailable: false,
+    tags: ['Underground', 'Techno', 'Late Night'],
+  },
+  {
+    id: '3',
+    title: 'Exclusive Art & Music Night',
+    club: mockClubs[2],
+    date: '2025-01-27',
+    time: '21:00',
+    image: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=400',
+    description: 'Une expérience unique mêlant art contemporain et musique expérimentale',
+    dj: 'Thom Yorke',
+    musicGenre: 'Experimental Electronic',
+    price: { regular: 50, vip: 120, guestList: 25 },
+    capacity: 150,
+    attendees: 89,
+    isGuestListAvailable: true,
+    isVipAvailable: true,
+    tags: ['Exclusive', 'Art', 'Experimental'],
+  },
+];
+
+export const mockBookings: Booking[] = [
+  {
+    id: '1',
+    event: mockEvents[0],
+    user: mockUser,
+    type: 'vip',
+    guests: 2,
+    status: 'confirmed',
+    qrCode: 'QR_CODE_12345',
+    createdAt: '2025-01-20T10:30:00Z',
+    totalPrice: 160,
+  },
+];
+
+export const mockReviews: Review[] = [
+  {
+    id: '1',
+    user: mockUser,
+    club: mockClubs[0],
+    event: mockEvents[0],
+    rating: 5,
+    comment: 'Incredible night! The atmosphere was perfect and the music was amazing.',
+    date: '2025-01-15',
+    photos: ['https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=200'],
+  },
+];
+
+export const mockRecommendations: Recommendation[] = [
+  {
+    id: '1',
+    event: mockEvents[0],
+    score: 0.95,
+    reasons: ['Matches your music taste', 'VIP available', 'Your neighborhood'],
+    type: 'personalized',
+  },
+  {
+    id: '2',
+    event: mockEvents[1],
+    score: 0.87,
+    reasons: ['Trending in Paris', 'Similar to events you liked'],
+    type: 'trending',
+  },
+];
